@@ -93,6 +93,10 @@ dev_dependencies:
   wakelock_plus_platform_interface: ^1.5.1
 
 dependency_overrides:
+  chessground:
+    git:
+      url: https://github.com/PrabaljeetSingh0101/flutter-chessground.git
+      ref: main
   flutter_secure_storage_linux:
     git:
       url: https://github.com/christianfl/flutter_secure_storage.git

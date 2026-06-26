@@ -66,7 +66,15 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("release")
+            val hasReleaseKey = keystoreProperties.containsKey("storeFile") &&
+                                keystoreProperties.containsKey("keyAlias") &&
+                                keystoreProperties.containsKey("storePassword") &&
+                                keystoreProperties.containsKey("keyPassword")
+            signingConfig = if (hasReleaseKey) {
+                signingConfigs.getByName("release")
+            } else {
+                signingConfigs.getByName("debug")
+            }
             ndk {
                 debugSymbolLevel = "FULL"
             }
